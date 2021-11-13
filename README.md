@@ -15,4 +15,4 @@ Update - POST -/case
 Delete - DELETE - /case/{id}
 
 
-Implemented Swagger UI, available at http://localhost:8080/swagger-ui/index.html
+Implemented Swagger UI, available at http://localhost:8080/swagger-ui.html
