@@ -3,6 +3,7 @@ package com.example.caseMangSys.catalog.application;
 import com.example.caseMangSys.catalog.application.port.CaseServiceUseCase;
 import com.example.caseMangSys.catalog.domain.Case;
 import com.example.caseMangSys.catalog.domain.CaseRepository;
+import com.example.caseMangSys.catalog.domain.StatusCase;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -25,7 +26,7 @@ public class CaseService implements CaseServiceUseCase {
 
     @Override
     public void addCase(CreateCaseCommand command) {
-        Case aCase = new Case(command.getTitle(), command.getDescription(), command.getDate(), command.getSecurityLevel(), command.getStatus());
+        Case aCase = new Case(command.getTitle(), command.getDescription(), command.getDate(), command.getSecurityLevel(), StatusCase.NEW);
         repository.save(aCase);
 
     }

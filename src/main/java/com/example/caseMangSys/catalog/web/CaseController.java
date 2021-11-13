@@ -4,12 +4,16 @@ import com.example.caseMangSys.catalog.application.port.CaseServiceUseCase;
 import com.example.caseMangSys.catalog.application.port.CaseServiceUseCase.CreateCaseCommand;
 import com.example.caseMangSys.catalog.application.port.CaseServiceUseCase.UpdateCaseCommand;
 import com.example.caseMangSys.catalog.domain.Case;
+import com.example.caseMangSys.catalog.domain.SecurityLevel;
+import com.example.caseMangSys.catalog.domain.StatusCase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/case")
@@ -33,7 +37,7 @@ public class CaseController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteById(@PathVariable Long id) {
         catalog.removeById(id);
     }
@@ -48,9 +52,9 @@ public class CaseController {
     private static class RestCaseCommand {
         private String title;
         private String description;
-        private String date;
-        private String securityLevel;
-        private String status;
+        private LocalDate date;
+        private SecurityLevel securityLevel;
+        private StatusCase status;
 
 
         CreateCaseCommand toCreateCommand() {

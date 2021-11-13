@@ -1,11 +1,13 @@
 package com.example.caseMangSys.catalog.application.port;
 
 import com.example.caseMangSys.catalog.domain.Case;
+import com.example.caseMangSys.catalog.domain.SecurityLevel;
+import com.example.caseMangSys.catalog.domain.StatusCase;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CaseServiceUseCase {
@@ -17,21 +19,14 @@ public interface CaseServiceUseCase {
 
     void removeById(Long id);
 
-//    @Value
-//    class UpdateCaseResponse {
-//        public static UpdateCaseResponse SUCCESS = new UpdateCaseResponse(true, Collections.emptyList());
-//
-//        boolean success;
-//        List<String> errors;
-//    }
 
     @Value
     class CreateCaseCommand {
         String title;
         String description;
-        String date;
-        String securityLevel;
-        String status;
+        LocalDate date;
+        SecurityLevel securityLevel;
+        StatusCase status;
     }
 
 
@@ -42,9 +37,9 @@ public interface CaseServiceUseCase {
         Long id;
         String title;
         String description;
-        String date;
-        String securityLevel;
-        String status;
+        LocalDate date;
+        SecurityLevel securityLevel;
+        StatusCase status;
 
         public Case updateFields(Case aCase) {
             if (title != null) {
@@ -60,7 +55,7 @@ public interface CaseServiceUseCase {
                 aCase.setSecurityLevel(securityLevel);
             }
             if (status != null) {
-                aCase.setStatus(status);
+                aCase.setStatusCase(status);
             }
             return aCase;
         }
